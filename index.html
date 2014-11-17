@@ -39,14 +39,14 @@
                 <ul class="cards">
                     <li class="card" ng-repeat="employee in employees">
                         <!-- this img should show the employee picture --> 
-                        <img alt="picture of {{employees.firstName}} {{employees.lastName}}" ng-src="{{employees.picUrl}}">
+                        <img alt="picture of {{employee.firstName}} {{employee.lastName}}" ng-src="{{employee.picUrl}}">
                         <p>{{employees.picUrl}}</p>
                         <div class="details">
                             <h2 class="name">{{employee.firstName}} {{employee.lastName}} </h2>
                             <p class="title">{{employee.title}}</p>
-                            <p class="department"> {{employee.department}}</p>
-                            <p class="phone"><a> <!-- employee phone goes here (if present); hyperlink should dial number on mobile phone --> </a></p>
-                            <p class="email"><a> <!-- employee email goes here (if present); hyperlink should open a new email to email address --> </a></p>
+                            <p class="department">{{employee.department}}</p>
+                            <p class="phone">{{employee.phone}}<a> <!-- employee phone goes here (if present); hyperlink should dial number on mobile phone --> </a></p>
+                            <p class="email">{{employee.email}}<a> <!-- employee email goes here (if present); hyperlink should open a new email to email address --> </a></p>
                         </div>
                     </li>
                 </ul>
