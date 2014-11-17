@@ -39,7 +39,8 @@
                 <ul class="cards">
                     <li class="card" ng-repeat="employee in employees">
                         <!-- this img should show the employee picture --> 
-                        <img alt="picture of {{employees.firstName}} {{employees.lastName}}" ng-src={{employees.picUrl}}>
+                        <img alt="picture of {{employees.firstName}} {{employees.lastName}}" ng-src="{{employees.picUrl}}">
+                        <p>{{employees.picUrl}}</p>
                         <div class="details">
                             <h2 class="name">{{employee.firstName}} {{employee.lastName}} </h2>
                             <p class="title">{{employee.title}}</p>
