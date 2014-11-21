@@ -31,22 +31,23 @@
                 </div>
                 <!-- filter input; you will add attributes to make this filter the list based on value entered -->
                 <div class="filter-ui">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="text" class="form-control" placeholder="Search..."
+                            ng-model="searchString">
                 </div>
             </section>
 
             <section>
                 <ul class="cards">
-                    <li class="card" ng-repeat="employee in employees">
+                    <li class="card" ng-repeat="employee in employees | filter : searchString">
                         <!-- this img should show the employee picture --> 
                         <img alt="picture of {{employee.firstName}} {{employee.lastName}}" ng-src="{{employee.picUrl}}">
                         <p>{{employees.picUrl}}</p>
                         <div class="details">
-                            <h2 class="name">{{employee.firstName}} {{employee.lastName}} </h2>
+                            <h2 class="name">{{employee.firstName}} {{employee.lastName}}</h2>
                             <p class="title">{{employee.title}}</p>
                             <p class="department">{{employee.department}}</p>
-                            <p class="phone">{{employee.phone}}<a> <!-- employee phone goes here (if present); hyperlink should dial number on mobile phone --> </a></p>
-                            <p class="email">{{employee.email}}<a> <!-- employee email goes here (if present); hyperlink should open a new email to email address --> </a></p>
+                            <p class="phone"><a ng-if = "employee.phone" ng-href = "tel:+{{employee.phone}}">{{employee.phone}}</a></p>
+                            <p class="email"><a ng-if = "employee.email" ng-href = "mailto:{{employee.email}}">{{employee.email}}</a></p>
                         </div>
                     </li>
                 </ul>

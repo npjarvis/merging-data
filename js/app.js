@@ -11,5 +11,6 @@ angular.module('AddressBook', [])
     .controller('AddressController', function($scope) {
         $scope.employees = pawneeEmployees;
         $scope.sortCol = 'lastName';
+        $scope.phone = 'phone';
 
     });
