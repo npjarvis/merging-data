@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Nathan Jarvis">
+        <meta name="description" content="Merging Data Address Book Challenge">
         <title>City of Pawnee Employees</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -24,9 +26,9 @@
                 <div class="sort-ui">
                     <span>Sort By: </span>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default">Last Name</button>
-                        <button type="button" class="btn btn-default">First Name</button>
-                        <button type="button" class="btn btn-default">Department</button>
+                        <button type="button" class="btn btn-default" ng-click="sortBy('lastName')" ng-class="{sorted: isSortedBy('lastName')}">Last Name</button>
+                        <button type="button" class="btn btn-default" ng-click="sortBy('firstName')" ng-class="{sorted: isSortedBy('firstName')}">First Name</button>
+                        <button type="button" class="btn btn-default" ng-click="sortBy('department')" ng-class="{sorted: isSortedBy('department')}">Department</button>
                     </div>
                 </div>
                 <!-- filter input; you will add attributes to make this filter the list based on value entered -->
@@ -38,16 +40,17 @@
 
             <section>
                 <ul class="cards">
-                    <li class="card" ng-repeat="employee in employees | filter : searchString">
+                    <!--ng-repeat for each object within the employees.js array-->
+                    <li class="card" ng-repeat="employeeObj in employees | filter : searchString | orderBy: sortCol : sortReverse">
                         <!-- this img should show the employee picture --> 
-                        <img alt="picture of {{employee.firstName}} {{employee.lastName}}" ng-src="{{employee.picUrl}}">
+                        <img alt="picture of {{employeeObj.firstName}} {{employeeObj.lastName}}" ng-src="{{employeeObj.picUrl}}">
                         <p>{{employees.picUrl}}</p>
                         <div class="details">
-                            <h2 class="name">{{employee.firstName}} {{employee.lastName}}</h2>
-                            <p class="title">{{employee.title}}</p>
-                            <p class="department">{{employee.department}}</p>
-                            <p class="phone"><a ng-if = "employee.phone" ng-href = "tel:+{{employee.phone}}">{{employee.phone}}</a></p>
-                            <p class="email"><a ng-if = "employee.email" ng-href = "mailto:{{employee.email}}">{{employee.email}}</a></p>
+                            <h2 class="name">{{employeeObj.firstName}} {{employeeObj.lastName}}</h2>
+                            <p class="title">{{employeeObj.title}}</p>
+                            <p class="department">{{employeeObj.department}}</p>
+                            <p class="phone"><a ng-if = "employeeObj.phone" ng-href = "tel:+{{employeeObj.phone}}">{{employeeObj.phone}}</a></p>
+                            <p class="email"><a ng-if = "employeeObj.email" ng-href = "mailto:{{employeeObj.email}}">{{employeeObj.email}}</a></p>
                         </div>
                     </li>
                 </ul>
